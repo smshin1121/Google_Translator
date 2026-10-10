@@ -78,7 +78,8 @@
           "embed": true,
           "link": false,
           "copy": {
-            "destination": "plugins"
+            "destination": "plugins",
+            "subpath": ""
           }
         }
       ]

@@ -5,6 +5,7 @@ import TranslatorCore
 struct TextTranslationView: View {
     @ObservedObject var store: AppStore
     @State private var configuration: TranslationSession.Configuration?
+    @State private var configuredRequestID: UUID?
 
     var body: some View {
         NavigationStack {
@@ -56,24 +57,12 @@ struct TextTranslationView: View {
             }
             .navigationTitle("텍스트 번역")
         }
-        .onChange(of: store.activeRequest?.id) { _, _ in
-            guard let request = store.activeRequest else { configuration = nil; return }
-            configuration = TranslationSession.Configuration(
-                source: Locale.Language(identifier: request.source.rawValue),
-                target: Locale.Language(identifier: request.target.rawValue))
-        }
-        .onAppear {
-            // Also handles a Watch request that selects this tab before its first appearance.
-            if let request = store.activeRequest {
-                configuration = TranslationSession.Configuration(
-                    source: Locale.Language(identifier: request.source.rawValue),
-                    target: Locale.Language(identifier: request.target.rawValue))
-            }
-        }
+        .onChange(of: store.activeRequest?.id) { _, _ in configureActiveRequest() }
+        .onAppear { configureActiveRequest() }
         .translationTask(configuration) { @MainActor session in
             guard let request = store.activeRequest else { return }
             do {
-                let availability = LanguageAvailability()
+                let availability = makeAvailability()
                 let status = await availability.status(
                     from: Locale.Language(identifier: request.source.rawValue),
                     to: Locale.Language(identifier: request.target.rawValue))
@@ -89,5 +78,32 @@ struct TextTranslationView: View {
                 store.fail(requestID: request.id, text: "번역을 완료하지 못했습니다. 언어팩 설치와 기기 상태를 확인하세요.")
             }
         }
+    }
+
+    private func configureActiveRequest() {
+        guard let request = store.activeRequest else {
+            configuration = nil
+            configuredRequestID = nil
+            return
+        }
+        guard configuredRequestID != request.id else { return }
+        configuredRequestID = request.id
+        configuration = makeConfiguration(request)
+    }
+
+    private func makeConfiguration(_ request: TranslationRequest) -> TranslationSession.Configuration {
+        let source = Locale.Language(identifier: request.source.rawValue)
+        let target = Locale.Language(identifier: request.target.rawValue)
+        if #available(iOS 26.4, *) {
+            return TranslationSession.Configuration(source: source, target: target, preferredStrategy: .lowLatency)
+        }
+        return TranslationSession.Configuration(source: source, target: target)
+    }
+
+    private func makeAvailability() -> LanguageAvailability {
+        if #available(iOS 26.4, *) {
+            return LanguageAvailability(preferredStrategy: .lowLatency)
+        }
+        return LanguageAvailability()
     }
 }

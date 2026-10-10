@@ -34,7 +34,7 @@ final class CompanionLink: NSObject, ObservableObject {
             waiting = true
             response = nil
             WCSession.default.sendMessageData(data, replyHandler: { [weak self] data in
-                Task { @MainActor in self?.receive(data) }
+                Task { @MainActor in self?.receiveReply(data) }
             }, errorHandler: { [weak self] _ in
                 Task { @MainActor in
                     self?.failPending(requestID: request.translation.id,
@@ -60,6 +60,11 @@ final class CompanionLink: NSObject, ObservableObject {
         } catch {
             connectionText = "결과 동기화에 실패했습니다. iPhone에서 결과를 확인하세요."
         }
+    }
+
+    private func receiveReply(_ data: Data) {
+        guard let incoming = try? WatchCodec.decodeResponse(data), pendingID == incoming.requestID else { return }
+        receive(data)
     }
 
     private func receive(_ data: Data) {

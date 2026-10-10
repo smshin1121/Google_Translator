@@ -28,6 +28,8 @@ final class AppStore: ObservableObject {
     }
 
     func translateInput() {
+        guard !isBusy else { return }
+        output = ""
         let request = TranslationRequest(text: input, source: source, target: target)
         do { try start(request) }
         catch { message = error.localizedDescription }

@@ -56,7 +56,7 @@ def check_generated():
     pbx = ROOT / "MeetingTranslator.xcodeproj/project.pbxproj"
     require(pbx.is_file(), "Generate the Xcode project first")
     content = pbx.read_text(encoding="utf-8")
-    phases = re.findall(r"[A-F0-9]{24}\s*/\*.*?\*/\s*=\s*\{[^{}]*isa = PBXCopyFilesBuildPhase;[^{}]*\};",
+    phases = re.findall(r"[A-F0-9]{24}\s*/\*[^\n]*?\*/\s*=\s*\{[^{}]*isa = PBXCopyFilesBuildPhase;[^{}]*\};",
                         content, re.DOTALL)
     watch_phases = [p for p in phases if "MeetingTranslatorWatch.app" in p]
     require(len(watch_phases) == 1, "Expected exactly one phase embedding the Watch app")
