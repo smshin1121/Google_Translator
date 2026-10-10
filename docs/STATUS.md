@@ -25,4 +25,6 @@
 ## 저장소
 
 사용자가 지정한 원격은 https://github.com/smshin1121/Google_Translator 입니다.
-로컬 origin 연결과 기존 최초 커밋 2dbdf6a 및 origin/main 참조를 확인했습니다. 이번 추가 문서와 검토 수정의 원격 업로드 여부는 실제 push 결과로 확인합니다.
+로컬 origin 연결과 기존 최초 커밋 2dbdf6a 및 origin/main 참조를 확인했습니다. 추가 문서와 검토 수정은 로컬 커밋으로 저장했습니다. 최신 커밋의 push는 도구 실행 계정에서 Windows Git 자격 증명을 사용하지 못해 실패했습니다. Chrome은 현재 도구에 연결되지 않았습니다.
+
+인증된 본인 Windows 터미널에서 이 폴더의 git push origin main을 실행하면 준비한 커밋을 업로드할 수 있습니다. 저장소의 공개/비공개 설정은 변경하지 않았습니다.
