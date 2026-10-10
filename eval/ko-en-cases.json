@@ -1,0 +1,186 @@
+{
+  "version": 1,
+  "purpose": "Human checks, not exact-string expected outputs",
+  "cases": [
+    {
+      "id": "ko-en-001",
+      "source": "ko",
+      "target": "en",
+      "text": "회의는 내일 오전 10시 30분에 시작합니다.",
+      "checks": [
+        "내일, 오전, 10:30 보존"
+      ]
+    },
+    {
+      "id": "ko-en-002",
+      "source": "en",
+      "target": "ko",
+      "text": "The meeting starts tomorrow at 10:30 a.m.",
+      "checks": [
+        "내일 오전 10:30 보존"
+      ]
+    },
+    {
+      "id": "ko-en-003",
+      "source": "ko",
+      "target": "en",
+      "text": "이번 금요일까지 초안을 제출해 주세요.",
+      "checks": [
+        "이번 금요일, 요청 존댓말"
+      ]
+    },
+    {
+      "id": "ko-en-004",
+      "source": "en",
+      "target": "ko",
+      "text": "Please submit the draft by this Friday.",
+      "checks": [
+        "이번 금요일까지, 공손한 요청"
+      ]
+    },
+    {
+      "id": "ko-en-005",
+      "source": "ko",
+      "target": "en",
+      "text": "이번 배포에는 결제 기능을 포함하지 않습니다.",
+      "checks": [
+        "부정, 이번 배포, 결제 기능"
+      ]
+    },
+    {
+      "id": "ko-en-006",
+      "source": "en",
+      "target": "ko",
+      "text": "Do not include the payment feature in this release.",
+      "checks": [
+        "부정 지시, 이번 릴리스"
+      ]
+    },
+    {
+      "id": "ko-en-007",
+      "source": "ko",
+      "target": "en",
+      "text": "지연 시간은 250밀리초이고 성공률은 99.5퍼센트입니다.",
+      "checks": [
+        "250ms, 99.5%, 지표 의미"
+      ]
+    },
+    {
+      "id": "ko-en-008",
+      "source": "en",
+      "target": "ko",
+      "text": "Latency is 250 milliseconds and the success rate is 99.5 percent.",
+      "checks": [
+        "250밀리초, 99.5%"
+      ]
+    },
+    {
+      "id": "ko-en-009",
+      "source": "ko",
+      "target": "en",
+      "text": "김민수 씨가 API 문서를 검토하고 이서연 씨가 테스트를 맡습니다.",
+      "checks": [
+        "두 이름, 역할 혼동 없음, API"
+      ]
+    },
+    {
+      "id": "ko-en-010",
+      "source": "en",
+      "target": "ko",
+      "text": "Minsu Kim will review the API documentation, and Seoyeon Lee will handle testing.",
+      "checks": [
+        "두 사람과 역할 대응"
+      ]
+    },
+    {
+      "id": "ko-en-011",
+      "source": "ko",
+      "target": "en",
+      "text": "예산은 확정되지 않았고 최대 1,500달러를 검토 중입니다.",
+      "checks": [
+        "미확정, 상한 1,500 USD, 논의 단계"
+      ]
+    },
+    {
+      "id": "ko-en-012",
+      "source": "en",
+      "target": "ko",
+      "text": "The budget is not approved yet; we are considering a maximum of $1,500.",
+      "checks": [
+        "미승인, 최대값, 고려 중"
+      ]
+    },
+    {
+      "id": "ko-en-013",
+      "source": "ko",
+      "target": "en",
+      "text": "다음 주에는 오프라인 모드를, 그다음 주에는 온라인 모드를 확인하겠습니다.",
+      "checks": [
+        "일정 순서, 모드명"
+      ]
+    },
+    {
+      "id": "ko-en-014",
+      "source": "en",
+      "target": "ko",
+      "text": "We will check offline mode next week and online mode the week after.",
+      "checks": [
+        "다음 주/그다음 주 구분"
+      ]
+    },
+    {
+      "id": "ko-en-015",
+      "source": "ko",
+      "target": "en",
+      "text": "방금 말씀하신 일정을 다시 한번 확인해 주시겠습니까?",
+      "checks": [
+        "공손한 확인 요청"
+      ]
+    },
+    {
+      "id": "ko-en-016",
+      "source": "en",
+      "target": "ko",
+      "text": "Could you confirm the schedule you just mentioned?",
+      "checks": [
+        "공손한 요청, 방금 언급한 일정"
+      ]
+    },
+    {
+      "id": "ko-en-017",
+      "source": "ko",
+      "target": "en",
+      "text": "서울 지사는 3층 회의실 A를 사용하고 부산 지사는 원격으로 참석합니다.",
+      "checks": [
+        "서울/부산, 3층 A, 원격참석"
+      ]
+    },
+    {
+      "id": "ko-en-018",
+      "source": "en",
+      "target": "ko",
+      "text": "The Seoul office will use meeting room A on the third floor; Busan will join remotely.",
+      "checks": [
+        "지역별 참석 방식"
+      ]
+    },
+    {
+      "id": "ko-en-019",
+      "source": "ko",
+      "target": "en",
+      "text": "서버를 재시작하기 전에 설정을 백업해 주세요.",
+      "checks": [
+        "백업 후 재시작 순서"
+      ]
+    },
+    {
+      "id": "ko-en-020",
+      "source": "en",
+      "target": "ko",
+      "text": "Back up the configuration before restarting the server.",
+      "checks": [
+        "작업 순서 보존"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,4 @@
+// Copy to Local.xcconfig on the Mac, then enter your Apple developer team.
+DEVELOPMENT_TEAM =
+IPHONE_BUNDLE_IDENTIFIER = dev.smshin.meetingtranslator
+WATCH_BUNDLE_IDENTIFIER = $(IPHONE_BUNDLE_IDENTIFIER).watch

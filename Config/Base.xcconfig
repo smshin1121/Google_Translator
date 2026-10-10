@@ -1,0 +1,4 @@
+IPHONE_BUNDLE_IDENTIFIER = dev.smshin.meetingtranslator
+WATCH_BUNDLE_IDENTIFIER = $(IPHONE_BUNDLE_IDENTIFIER).watch
+// Override signing and bundle IDs in the ignored Local.xcconfig.
+#include? "Local.xcconfig"

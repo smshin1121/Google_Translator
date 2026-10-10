@@ -1,0 +1,17 @@
+name: macOS build check
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  build:
+    runs-on: macos-26
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - name: Show active Xcode
+        run: xcodebuild -version
+      - name: Install project generator
+        run: brew install xcodegen
+      - name: Check core and both apps
+        run: bash scripts/check_mac.sh
